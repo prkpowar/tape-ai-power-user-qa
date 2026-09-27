@@ -1,26 +1,41 @@
 # Regression Specification — FUND-001
 
-## Objective
-Prevent recurrence of the two verified issue classes from the TCS Q1 FY27 live test.
+## Confirmed regression
 
-## REG-001 — Earnings release date provenance
+### REG-001 — Earnings release date provenance
 
-Given: A company has an issuer investor calendar and result-release page.
-When: The user asks for the latest earnings date.
-Then: The answer should prefer the issuer's official release date and distinguish it from the data refresh timestamp, filing publication timestamp, and result period end date.
+**Given:** A company has an issuer investor calendar and an official result-release page.
 
-Failure code: TPQ-TIME-003
+**When:** The user asks for the latest earnings release date.
 
-## REG-002 — Derived metric labeling
+**Then:** The answer should use the issuer's official release date and distinguish it from:
 
-Given: The requested metric is not explicitly reported by the issuer.
-When: The system derives a value from reported line items.
-Then: The answer should explicitly identify it as derived and should not silently equate it with a separately defined management metric.
+- period end date
+- filing/publication timestamp
+- data refresh timestamp
 
-Failure code: TPQ-CALC-007 / TPQ-UX-005
+**Failure code:** TPQ-TIME-003
+
+## Observation-only UX test
+
+### UX-001 — Derived metric transparency
+
+Tape AI explicitly disclosed that its ₹18,556 Cr EBITDA figure was derived because TCS does not publish a line called EBITDA.
+
+That is currently classified as **PASS / good transparency behavior**.
+
+Future repeated tests should check whether users could still confuse:
+
+- derived EBITDA/operating-profit proxy
+- issuer-reported operating margin
+
+No defect is recorded from FUND-001 for this item.
 
 ## Evidence
-See reports/2026-09-27_FUND-001_TCS_Q1FY27.md and data/captures/FUND-001_tcs_q1fy27.json
+
+- reports/2026-09-27_FUND-001_TCS_Q1FY27.md
+- data/captures/FUND-001_tcs_q1fy27.json
 
 ## Status
-Regression design recorded. Execution requires a future live product run.
+
+REG-001 documented. Future live run required to execute the regression.
