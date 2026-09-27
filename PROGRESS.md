@@ -12,39 +12,40 @@ This file is updated as research questions are added, executed, verified, and co
 
 ## Stage 1 — Live Tape AI testing
 
-### FUND-001 — TCS latest financial snapshot
-**Status: VERIFIED — 1 confirmed P2 finding + 1 observation-only UX opportunity**
+### FUND-001 — TCS latest quarterly snapshot
+**Status: VERIFIED — 1 confirmed P2 finding**
 
-Observed:
-- Q1 FY27, quarter ended 30 Jun 2026
-- Revenue ₹72,275 Cr
-- Derived EBITDA/operating-profit proxy ₹18,556 Cr
-- PAT/profit for period ₹13,420 Cr
-- Basic/diluted EPS ₹36.90
-- Tape AI reported data refresh at 27 Sep 2026 07:47 IST
-
-Independent verification:
-- TCS official investor calendar: Q1 FY27 earnings release 09 Jul 2026.
-- TCS official Q1 FY27 release: 09 Jul 2026, consolidated IFRS result for quarter ended 30 Jun 2026.
-- Detailed filing: revenue ₹72,275 Cr; profit for period ₹13,420 Cr; EPS ₹36.90.
-
-Confirmed finding:
-- **TPQ-TIME-003 (P2):** Tape AI stated 10 Jul 2026 as the result-declaration date; issuer materials show 09 Jul 2026.
-
-Observation, not defect:
-- Tape AI already disclosed that ₹18,556 Cr EBITDA was derived because TCS does not publish a line called EBITDA. We will not classify this as a false positive. It can still be evaluated as a UX improvement in later repeated tests.
+Confirmed:
+- **TPQ-TIME-003 (P2):** Tape AI stated 10 Jul 2026; TCS issuer materials show 09 Jul 2026.
 
 Positive behavior:
-- Reporting period and units shown.
-- Consolidated basis shown.
-- Derived metric disclosed as derived.
-- Single-source caveat disclosed.
-- Data-refresh timestamp disclosed.
+- period, units, consolidated basis, derived metric disclosure, source caveat and refresh timestamp were shown.
 
 Evidence:
-- reports/2026-09-27_FUND-001_TCS_Q1FY27.md
-- data/captures/FUND-001_tcs_q1fy27.json
-- regressions/FUND-001.md
+- `reports/2026-09-27_FUND-001_TCS_Q1FY27.md`
+- `data/captures/FUND-001_tcs_q1fy27.json`
+- `regressions/FUND-001.md`
+
+### FUND-002 — TCS vs Infosys Q1 FY27 comparison
+**Status: VERIFIED — 2 confirmed P2 findings + 1 confirmed P1 research-comparability finding**
+
+Confirmed:
+- **TPQ-TIME-003 (P2):** TCS release date stated as 10 Jul 2026; official date is 09 Jul 2026.
+- **TPQ-TIME-003 (P2):** Infosys release date stated as 24 Jul 2026; official date is 23 Jul 2026.
+- **TPQ-RES-001 (P1):** Infosys ₹11,409 Cr was labelled operating profit, but official consolidated operating profit is ₹10,163 Cr; ₹11,409 Cr is segment profit before ₹1,246 Cr unallocable expenses. This makes the comparison with TCS's ₹18,556 Cr provider-style operating-profit figure non-like-for-like.
+
+Positive behavior:
+- Both companies were correctly placed in Q1 FY27.
+- ROE was explicitly flagged as non-quarterly/period-uncertain.
+- Tape AI disclosed that some figures were derived.
+- Revenue values reconcile to issuer figures.
+
+Evidence:
+- `reports/2026-09-27_FUND-002_TCS_vs_Infosys_Q1FY27.md`
+- `data/captures/FUND-002_tcs_infosys_q1fy27.json`
+
+### Key lesson from Batch 01
+The highest-value failure so far is not arithmetic; it is **semantic metric mismatch**. A response can contain real numbers and still create a misleading peer comparison when the numbers have different definitions.
 
 ### Next test
-**FUND-002 — TCS vs Infosys comparison**
+**FUND-003 — TCS cash conversion**
