@@ -1,0 +1,25 @@
+{
+  "test_id": "FUND-002",
+  "observed_at_ist": "2026-09-27T18:00:00+05:30",
+  "question": "Compare Company A and Company B on latest revenue growth and ROE. Show reporting periods.",
+  "entities": ["COMPANY_A", "COMPANY_B"],
+  "expected": {
+    "same_reporting_basis": true,
+    "period_visible": true,
+    "units_visible": true
+  },
+  "actual": {
+    "period_a": "FY2026",
+    "period_b": "TTM",
+    "period_visible": true,
+    "units_visible": true
+  },
+  "verification": {
+    "status": "mismatch",
+    "notes": "Values may individually be plausible but are not on the same reporting basis."
+  },
+  "classification": ["period", "research-comparability"],
+  "severity": "P1",
+  "confidence": "high",
+  "recommended_fix": "Require like-for-like periods for peer comparison or explicitly flag the mismatch."
+}
