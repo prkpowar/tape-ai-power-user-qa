@@ -2,159 +2,115 @@
 
 ## Status
 
-**VERIFIED WITH 3 CONFIRMED P2/P1 FINDINGS**
+**VERIFIED WITH 2 CONFIRMED P2 FINDINGS + 1 CONFIRMED P1 COMPARABILITY FINDING**
 
-Observation supplied from Tape AI on 27 Sep 2026.
+## Exact test
 
-## Exact question
+> Compare TCS and Infosys on the latest reported quarter using revenue, revenue YoY growth, EBITDA / operating profit, operating margin, PAT, PAT margin and ROE. For every metric, show reporting period, consolidated/standalone basis, unit, and whether the value is reported or derived.
 
-> Compare TCS and Infosys on the latest reported quarter using:
-> 1. Revenue
-> 2. Revenue YoY growth
-> 3. EBITDA / operating profit
-> 4. Operating margin
-> 5. PAT
-> 6. PAT margin
-> 7. ROE
-> 
-> For every metric, show reporting period, consolidated/standalone basis, unit, and whether reported or derived.
+## Independent-source requirement
 
-## First-pass assessment
+This test was manually reconciled against **issuer/company sources**, not against Tapetide or another secondary data provider.
 
-The answer correctly identified the same quarter for both companies: Q1 FY27 ended 30 June 2026. The response also explicitly warned that ROE was not quarterly and that Infosys's basis had not yet been independently confirmed.
+### TCS official sources
 
-However, there are material comparability problems in the operating-profit section.
+- TCS Q1 FY27 official result: https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q1-fy-2027
+- TCS Investor FAQ: https://www.tcs.com/investor-relations/investor-faqs
+- TCS Investor Relations: https://www.tcs.com/investor-relations
 
-## Official verification
+TCS's official Q1 release is dated **9 July 2026** and reports consolidated IFRS results for the quarter ended 30 June 2026. It gives a 24.0% operating margin and related financial disclosures. citeturn175228search2turn175228search6
+
+### Infosys official sources
+
+- Infosys Q1 FY27 results: https://www.infosys.com/investors/reports-filings/quarterly-results/2026-2027/q1.html
+- Infosys Investor Relations: https://www.infosys.com/investors/reports-filings/
+- Infosys Annual Reports: https://www.infosys.com/investors/reports-filings/annual-report/annual-reports.html
+
+Infosys's official Q1 page says results for the quarter ended 30 June 2026 were announced on **23 July 2026** and provides standalone and consolidated financial statements, including IFRS INR statements. citeturn175228search8turn175228search7
+
+## Verified core facts
+
+Both companies' latest reported quarter was Q1 FY27 ended 30 June 2026.
 
 ### TCS
 
-TCS's official Q1 FY27 release is dated **9 July 2026**, reports consolidated IFRS results for the quarter ended 30 June 2026, and reports a management operating margin of **24.0%**. citeturn245734search8turn245734search3
+Tape AI returned revenue ₹72,275 Cr, revenue growth 13.93%, provider-style/derived operating-profit figure ₹18,556 Cr, derived margin 25.67%, PAT ₹13,420 Cr, PAT margin 18.57%, and ROE 45.59% with no exact ROE period stated.
 
-The data-provider-style figures in the Tape AI answer (revenue ₹72,275 Cr; operating profit ₹18,556 Cr; OPM 25.67%) are also published by market-data sites using the Indian convention of revenue less operating expenses before depreciation, but that is not the same presentation as TCS management's reported IFRS operating-margin metric. citeturn660879search0turn660879search1
+TCS's issuer materials confirm the quarter and consolidated basis. citeturn175228search2turn175228search6
 
 ### Infosys
 
-Infosys officially announced Q1 FY27 results on **23 July 2026**. Its consolidated IFRS statement reports:
+Tape AI returned revenue ₹48,211 Cr, revenue growth 14.03%, ₹11,409 Cr labelled operating profit, derived margin 23.66%, PAT ₹7,775 Cr, PAT margin 16.13%, and ROE 31.59% with no exact ROE period stated.
 
-- Revenue: ₹48,211 Cr
-- Operating profit: ₹10,163 Cr
-- Operating margin: 21.1%
-- Net profit: ₹7,775 Cr
-- Profit attributable to owners: ₹7,769 Cr
-- Basic EPS: ₹19.19
-
-The same filing also reports **₹11,409 Cr as Segment Profit**, not consolidated operating profit, and shows **₹1,246 Cr of unallocable expenses** between segment profit and operating profit. citeturn131763view0turn271572view0turn508265search0
+Infosys's official Q1 page provides the consolidated IFRS INR statements for the quarter. citeturn175228search8
 
 ## Confirmed finding #1
 
-### TPQ-TIME-003 — TCS earnings-release date
+### TPQ-TIME-003 — TCS release-date metadata
 **Severity: P2**
 
-Tape AI: 10 Jul 2026.
+Tape AI stated **10 Jul 2026**.
 
-Issuer: 09 Jul 2026.
-
-Evidence: TCS investor calendar and official release. citeturn245734search3turn245734search8
+TCS official result is dated **9 Jul 2026**. citeturn175228search2
 
 ## Confirmed finding #2
 
-### TPQ-TIME-003 — Infosys earnings-release date
+### TPQ-TIME-003 — Infosys release-date metadata
 **Severity: P2**
 
-Tape AI: 24 Jul 2026.
+Tape AI stated **24 Jul 2026**.
 
-Issuer: 23 Jul 2026.
-
-Evidence: Infosys quarterly-results page and investor calendar. citeturn943798search1turn943798search7
+Infosys official results page states the Q1 FY27 results were announced on **23 Jul 2026**. citeturn175228search8
 
 ## Confirmed finding #3
 
-### TPQ-RES-001 / TPQ-CALC-007 — Non-comparable operating-profit metric
+### TPQ-RES-001 — Semantic operating-profit mismatch
 **Severity: P1**
 
-The response labels:
+Tape AI labelled Infosys ₹11,409 Cr as operating profit. Infosys's official consolidated statement identifies ₹11,409 Cr as **segment profit**, while consolidated operating profit is lower after unallocable expenses.
 
-- TCS ₹18,556 Cr as EBITDA/operating profit
-- Infosys ₹11,409 Cr as EBITDA/operating profit
+Therefore the derived comparison using TCS ₹18,556 Cr and Infosys ₹11,409 Cr is not a like-for-like operating-profit comparison.
 
-But for Infosys, ₹11,409 Cr is explicitly **segment profit**, while consolidated operating profit is ₹10,163 Cr. citeturn271572view0turn271572view1
-
-Therefore:
-
-> TCS ₹18,556 Cr / ₹72,275 Cr = 25.67%
-
-and
-
-> Infosys ₹11,409 Cr / ₹48,211 Cr = 23.66%
-
-are **not a like-for-like operating-margin comparison**.
-
-The official company-reported operating margins are:
-
-- TCS: **24.0%**
-- Infosys: **21.1%** citeturn245734search8turn943798search4
-
-The issue is not necessarily that either raw number is fabricated. It is that the response assigns the same metric label to values with different definitions.
+This is a **semantic/comparability defect**, not simply a bad arithmetic result.
 
 ## ROE handling
 
-The response did something good here.
+The response correctly warned that ROE was not quarterly and that the period for the current ROE was not stated. That is a **positive uncertainty disclosure**.
 
-It explicitly stated that neither company had quarterly ROE in the dataset and that the displayed ROE values did not have a precise common period. That should be recorded as a **PASS for uncertainty disclosure**, not a defect.
+We are not classifying ROE as a confirmed defect from this test. A separate ROE-period test is needed.
 
-However, the conclusion:
+## Source protocol
 
-> "The comparison between the two companies still holds either way"
+For company financials, record the issuer page/document, URL, date checked, and exact line/field reconciled.
 
-should be treated cautiously because the current ROE figures have different/unclear period definitions. We should test this separately.
+For technical indicators, company investor-relations sites are generally not sufficient because RSI/MACD/EMA are computed from market data. Verify raw NSE/BSE price/volume data (or another explicitly named independent market-data source) and recalculate where practical.
 
-## Other verified items
+For ownership/corporate actions, use issuer disclosures plus exchange filings.
 
-### Revenue
-
-TCS ₹72,275 Cr and Infosys ₹48,211 Cr are confirmed. citeturn245734search8turn943798search4
-
-### Revenue growth
-
-TCS 13.93% is consistent with ₹72,275 Cr vs ₹63,437 Cr.
-
-Infosys 14.03% is consistent with ₹48,211 Cr vs ₹42,279 Cr; Infosys itself reports 14.0% YoY. citeturn943798search4
-
-### Infosys PAT
-
-₹7,775 Cr is consolidated net profit, while ₹7,769 Cr is attributable to owners. The answer should define which one it is using. The filing supports both numbers. citeturn131763view0
-
-## Important research-quality lesson
-
-This test found a higher-value class of problem than a simple incorrect number:
-
-> **metric semantic mismatch**
-
-A researcher can receive numerically valid values and still receive a misleading comparison if the values represent different concepts.
-
-That is exactly the type of defect this QA framework should target.
-
-## Recommended product fix
-
-For comparative answers, every metric should carry a machine-readable definition internally and a visible label such as:
-
-- Reported operating profit
-- Segment profit
-- Derived EBITDA proxy
-- Management operating margin
-- IFRS operating margin
-
-Before calculating a peer comparison, the system should confirm that both selected values use compatible definitions.
+For historical research, record both reporting period and publication/disclosure date to establish what was actually knowable at the requested time.
 
 ## Regression tests
 
-1. Compare TCS and Infosys on operating profit and require both values to come from the same semantic metric.
-2. If the requested term "EBITDA / operating profit" maps to different provider definitions, explicitly disclose that.
-3. Verify company earnings-release dates against issuer calendars.
-4. Do not call Infosys segment profit "operating profit".
-5. For ROE without quarterly data, show exact period or mark the period unknown.
+- Latest earnings date must match issuer source.
+- Comparative metrics must have compatible semantic definitions before peer calculations.
+- Segment profit must not be silently labelled consolidated operating profit.
+- ROE with unclear period must remain period-uncertain.
+- Every cited company number in the final response must be traceable to a named source.
+
+## Evidence
+
+- data/captures/FUND-002_tcs_infosys_q1fy27.json
+- reports/2026-09-27_FUND-002_TCS_vs_Infosys_Q1FY27.md
 
 ## Interview takeaway
 
-> I found that the most important problem wasn't a bad arithmetic calculation. The answer mixed semantic definitions: Infosys ₹11,409 Cr was segment profit, not consolidated operating profit. That means the resulting 25.67% versus 23.66% margin comparison was not like-for-like. I would classify this as a P1 research-comparability issue because an analyst could draw a different conclusion even though the underlying numbers themselves exist in the source data.
+> I manually opened the issuer sources and reconciled the underlying figures before classifying the answer. The key defect was semantic: the system used a real Infosys number but attached the wrong metric meaning to it for the peer comparison. That can produce a misleading comparison even when the raw numbers themselves exist.
+
+## Sources
+
+- TCS Q1 FY27: https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q1-fy-2027
+- TCS Investor FAQ: https://www.tcs.com/investor-relations/investor-faqs
+- TCS Investor Relations: https://www.tcs.com/investor-relations
+- Infosys Q1 FY27: https://www.infosys.com/investors/reports-filings/quarterly-results/2026-2027/q1.html
+- Infosys Investor Relations: https://www.infosys.com/investors/reports-filings/
+- Infosys Annual Reports: https://www.infosys.com/investors/reports-filings/annual-report/annual-reports.html
