@@ -1,159 +1,147 @@
-# Tape AI Power User QA Framework
+# Tape AI Power User QA
 
-A research-quality testing framework for evaluating AI-assisted Indian-equity research workflows, with a focus on factual accuracy, financial-period consistency, tool/MCP behavior, calculation correctness, point-in-time safety, screeners, Tapetide Score interpretation, governance context, and actionable product feedback.
+> **Independent research-quality QA framework for AI-assisted Indian-equity research**
 
-> **Important:** This repository is an independent testing framework created for portfolio/interview demonstration. The error codes below are tester-defined taxonomy codes unless explicitly marked as a documented Tapetide behavior. They are not claimed to be Tapetide's internal production error codes.
+[![Status](https://img.shields.io/badge/status-frozen%20for%20submission-2ea44f)](./reports/FINAL_SUBMISSION.md)
+[![Evidence](https://img.shields.io/badge/live%20tests-13%20captured-blue)](./PROGRESS.md)
+[![Blocked](https://img.shields.io/badge/daily%20limit-3%20blocked-lightgrey)](./questions/QUESTION_QUEUE.md)
 
-## Why this project exists
+This repository is a **portfolio demonstration for the Stock Research Analyst role at Tapetide**.
 
-Tapetide's public careers page describes the Stock Research Analyst as a power user who evaluates the quality of AI-generated stock analysis. Tapetide's MCP currently exposes research tools for NSE/BSE stocks, including fundamentals, technicals, flows, historical research, Tapetide Score, risk/governance, portfolio and watchlist workflows.
+It shows how I approach AI-assisted stock research as a power user: not by judging whether an answer *sounds* convincing, but by checking the **company, period, source, data, calculation, reasoning, reproducibility and product behavior**.
 
-This project demonstrates how to turn that job requirement into a reproducible QA process:
+## Start here
 
-```
-Research question
-      |
-      v
-Expected behavior
-      |
-      v
-AI / MCP observation
-      |
-      v
-Independent verification
-      |
-      v
-Failure classification
-      |
-      v
-Severity + impact
-      |
-      v
-Actionable recommendation
-      |
-      v
-Regression test
-```
+### 1. [Final Submission Report](./reports/FINAL_SUBMISSION.md)
+The recruiter-facing summary: what was tested, what was verified, what failed, what could not be completed, and what the project demonstrates.
 
-## What is included
+### 2. [Five-Minute Interview Demo](./docs/INTERVIEW_DEMO.md)
+A guided walkthrough for explaining the project quickly.
 
-This is an independent portfolio/interview project. It contains an 85-code tester-defined error taxonomy, a 20-case starter suite, a local validator, MCP test guidance, a Tapetide Score audit, an interview glossary, and a research runbook. Public Tapetide facts are isolated in `docs/PUBLIC_PRODUCT_FACTS.md` and should be re-checked before an interview.
+### 3. [Test Plan](./docs/TEST_PLAN.md)
+The methodology behind the test suite.
 
-## Repository map
+### 4. [Live Test Progress](./PROGRESS.md)
+The frozen state of the actual Tape AI testing run.
 
-- `docs/TEST_PLAN.md` - end-to-end power-user testing methodology
-- `docs/ERROR_CATALOG.md` - 85 tester-defined error codes with symptoms, checks and possible fixes
-- `docs/ERROR_TAXONOMY_GUIDE.md` - how to classify failures and use the taxonomy
-- `taxonomy/error_codes.json` - machine-readable taxonomy registry
-- `docs/CASE_STUDIES.md` - public methodology/QA lessons from Tapetide Score
-- `docs/RESEARCH_RUNBOOK.md` - one end-to-end power-user research session
-- `docs/PUBLIC_PRODUCT_FACTS.md` - current public product/application facts
-- `docs/BUG_REPORT_TEMPLATE.md` - engineering-ready bug-report format
-- `docs/MCP_TESTING.md` - MCP-specific validation strategy
-- `docs/TAPETIDE_SCORE_AUDIT.md` - methodology audit questions for deterministic scoring
-- `docs/INTERVIEW_GUIDE.md` - interview definitions and explainable examples
-- `test_cases/20_core_cases.yaml` - starter test suite
-- `examples/sample_capture.json` - example captured research interaction
-- `src/tapetide_qa/validator.py` - local deterministic checks on captured observations
-- `tests/` - unit tests for the framework itself
+### 5. [20-Case Test Catalog](./test_cases/20_core_cases.yaml)
+The original research and QA questions used for the live evaluation.
 
-## Scope
+## What I tested
 
-### Functional quality
+The framework covers the analyst workflow end to end:
 
-- entity resolution
-- quotes and timestamps
-- financial statements
-- ratios and calculations
-- screeners
-- technical indicators
-- market flows
-- ownership/governance
-- Tapetide Score
-- historical / point-in-time research
-- portfolio/watchlist workflows
+| Area | Examples |
+|---|---|
+| Fundamentals | quarterly results, cash conversion, financial health |
+| Valuation | P/E, P/B, EV/EBITDA, FCF yield, definition matching |
+| Technicals | RSI, MACD, moving averages, price/volume confirmation |
+| Screening | multi-condition filters, verification, pagination |
+| Ownership & governance | shareholding, promoter pledge/events |
+| Earnings & events | facts vs commentary vs interpretation |
+| Point-in-time research | publication-date cutoffs and look-ahead risk |
+| MCP / tools | tool selection, arguments, limits and reproducibility |
+| Tapetide Score | pillars, coverage, governance controls and methodology |
+| AI quality | hallucination, unsupported inference, uncertainty, source traceability |
 
-### AI quality
+## My QA model
 
-- hallucination
-- unsupported inference
-- overconfidence
-- missing caveats
-- conflicting evidence
-- period/source ambiguity
-- research completeness
+The core workflow is:
 
-### MCP/tool quality
+**Question → Expected evidence → Tape AI observation → Independent verification → Failure classification → Severity → Product recommendation → Regression test**
 
-- wrong tool selection
-- invalid arguments
-- partial results
-- schema drift
-- authentication and rate limits
-- aliases/retired tools
-- transport failures
+A research answer passes only when the material claims are supportable and the definitions are compatible.
 
-## Severity model
+### Independent verification rule
 
-- **P0 Critical:** materially wrong financial information, destructive action, security/privacy issue, or a failure that can fundamentally mislead research.
-- **P1 Major:** materially incorrect comparison, calculation, period, entity, screening condition, or historical context that can change a research conclusion.
-- **P2 Moderate:** incomplete or misleading presentation with a reasonable workaround.
-- **P3 Minor:** cosmetic, wording, discoverability or low-impact usability issue.
+Tape AI is the **system under test**.
 
-## Reproducibility rule
+For company-reported facts I prefer:
 
-Every serious finding should preserve:
+1. issuer Investor Relations / filings
+2. NSE / BSE exchange records
+3. SEBI for regulatory definitions
+4. raw market data + independent recalculation for technical indicators
 
-1. exact user question
-2. date/time of observation
-3. company/symbol/identifier
-4. reporting period or observation date
-5. tools used, when visible
-6. raw returned data or screenshot
-7. expected result
-8. actual result
-9. independent verification source
-10. classification + severity
-11. proposed fix
-12. regression test idea
+This prevents the common mistake of “verifying” an AI answer against the same data source that produced it.
 
-## Current Tapetide product context
+## Frozen live-test result
 
-The public Tapetide MCP documentation currently describes approximately 8,200 NSE/BSE stocks, a 326-ratio fundamental screener, 20+ technical indicators, 55 registered tool names including setup/aliases, historical research tools, the Tapetide Score, governance/risk tools, and a free tier of 50 successful calls/day and 1,000/month. Data freshness varies by dataset, and index option chains are described as end-of-day snapshots. The MCP docs also state that the system provides historical research inputs but does not run trading-strategy backtests.
+**Freeze date: 27 September 2026**
 
-## Usage
+- **20** planned core tests
+- **13** captured/completed before the live daily limit was reached
+- **3** blocked by the Tape AI daily limit
+- **4** not run
+- **2** tests fully independently verified with concrete findings
+- **1** additional captured test contains a documented P1 research-context contamination finding
+- Remaining captured cases are deliberately marked with source gaps or verification requirements rather than being overstated as verified
 
-This repository does not require a live Tapetide connection to run its local validator. Capture observations manually from the product/MCP and place them into JSON following `examples/sample_capture.json`.
+The incomplete cases are **not hidden**. The final report explains exactly why they remain incomplete.
 
-Example:
+## Confirmed findings
 
-```bash
-python -m tapetide_qa.validator examples/sample_capture.json
-```
+### FUND-001 — release-date metadata mismatch
+Tape AI stated TCS's Q1 FY27 result date as **10 Jul 2026**; the official TCS result/calendar shows **09 Jul 2026**.
 
-## Validation
+**Classification:** TPQ-TIME-003 · P2
 
-```bash
-pytest -q
-python scripts/validate_test_catalog.py test_cases/20_core_cases.yaml
-```
+### FUND-002 — peer-comparison semantic mismatch
+Tape AI labelled Infosys **₹11,409 Cr** as operating profit. The official Infosys consolidated statement identifies that amount as **segment profit**, while consolidated operating profit is **₹10,163 Cr**.
 
-## Interview positioning
+**Classification:** TPQ-RES-001 · P1
 
-The core message is:
+The same test also contained one-day release-date mismatches for TCS and Infosys.
 
-> I evaluate the answer, the data, the reporting period, the tool path, the calculation, the reasoning, and the user's ability to reproduce the result. When something fails, I turn it into a precise bug report and a regression test.
+### EVENT-001 — latest-event context contamination
+The response was asked for the latest TCS earnings event but used **Q1 FY26 management commentary** while presenting the task as a latest-event review.
 
-## Sources
+**Classification:** TPQ-TIME-004 / TPQ-AI-004 · P1
 
-- Tapetide careers: https://career.tapetide.com/stock-research-analyst
-- Tapetide MCP: https://tapetide.com/mcp
-- Tapetide MCP reference: https://mcp.tapetide.com/
-- Tapetide Score public repository: https://github.com/Tapetide-hq/tapetide-score
-- Model Context Protocol: https://modelcontextprotocol.io/
+The important QA behavior was that the contamination was explicitly disclosed rather than silently presented as current.
 
+## Engineering bridge
 
-## Publish
+This is not only a checklist. Confirmed observations are designed to become machine-checkable regression cases.
 
-See `docs/GITHUB_PUBLISH.md` for the exact commands to publish this repository under the `prkpowar/tape-ai-power-user-qa` GitHub namespace after authenticating to GitHub. See `docs/TAPE_AI_PROJECT.md` and `docs/QUICKSTART.md` for the project workflow.
-```
+- `src/tapetide_qa/validator.py` — deterministic validation logic
+- `tests/` — framework tests
+- `taxonomy/error_codes.json` — tester-defined TPQ taxonomy
+- `regressions/` — concrete regression evidence
+- `reports/` — candidate-facing research audits
+
+The **TPQ-*** codes are my own tester-defined taxonomy. They are not claimed to be Tapetide's internal production error codes.
+
+## Why this is relevant to the role
+
+My software-engineering background supports the **reproduction, validation, debugging and regression** side of the work.
+
+My stock-market development and research work supports the **financial-data, market-context and metric-definition** side.
+
+The project is meant to demonstrate the combination: **market understanding + technical QA discipline + AI product judgment**.
+
+## Review path for a recruiter
+
+Open this repository in this order:
+
+**[Final Submission Report](./reports/FINAL_SUBMISSION.md) → [Verified findings](./reports/) → [Test Plan](./docs/TEST_PLAN.md) → [Error Catalog](./docs/ERROR_CATALOG.md) → [Validator](./src/tapetide_qa/validator.py)**
+
+That path is intentionally short; the rest of the repository is supporting evidence.
+
+## Important scope note
+
+This is an **independent portfolio/interview project**, not an internal Tapetide audit and not a claim of exhaustive product coverage.
+
+Because the live product testing run hit its daily usage limit, the repository is frozen at the evidence actually obtained on 27 September 2026. No missing result is presented as tested.
+
+## Source links
+
+- [Tapetide Stock Research Analyst role](https://career.tapetide.com/stock-research-analyst)
+- [Tapetide MCP](https://tapetide.com/mcp)
+- [Tapetide MCP reference](https://mcp.tapetide.com/)
+- [Tapetide Score public repository](https://github.com/Tapetide-hq/tapetide-score)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+
+---
+
+**Submission note:** This repository is intentionally frozen as a transparent snapshot of the live test run. The goal is to demonstrate **how I test and reason about AI-assisted research**, not to maximize the number of test cases completed.
