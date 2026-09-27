@@ -1,68 +1,97 @@
-# Tape AI Power User QA — Progress Log
+# Tape AI Power User QA — Frozen Progress
 
-## Stage 0 — Framework initialized
-- QA taxonomy created
-- 20-case starter suite defined
-- MCP testing guide added
-- Tapetide Score audit added
-- Interview demo added
-- Source Verification Policy added
+**Freeze date: 27 September 2026**
 
-## Stage 1 — Live Tape AI testing
+This repository is now a **frozen portfolio/application snapshot**. No additional live Tape AI tests are planned for this submission.
+
+## Final test status
+
+| Status | Count | Meaning |
+|---|---:|---|
+| Captured / completed | 13 | Tape AI response was obtained and preserved |
+| Blocked | 3 | Live testing stopped because the Tape AI daily limit was reached |
+| Not run | 4 | Deliberately left unclaimed; no result was fabricated |
+| **Planned** | **20** | Full starter suite |
+
+## Fully verified findings
 
 ### FUND-001
-**VERIFIED — 1 confirmed P2**
+**1 confirmed P2 finding**
 
-Confirmed defect:
-- TPQ-TIME-003: TCS earnings-release date was stated as 10 Jul 2026; official TCS calendar/release show 09 Jul 2026.
-
-Positive behavior:
-- period/units/consolidated basis visible
-- derived metric disclosed
-- refresh time disclosed
-- single-source caveat disclosed
+- **TPQ-TIME-003:** TCS Q1 FY27 result date stated as 10 Jul 2026 vs official TCS date of 09 Jul 2026.
 
 ### FUND-002
-**VERIFIED — 2 confirmed P2 + 1 confirmed P1**
+**2 confirmed P2 + 1 confirmed P1 finding**
 
-Confirmed defects:
-- TPQ-TIME-003: TCS date off by one day.
-- TPQ-TIME-003: Infosys date off by one day.
-- TPQ-RES-001: Infosys ₹11,409 Cr was labelled operating profit; official consolidated operating profit is ₹10,163 Cr, while ₹11,409 Cr is segment profit. This creates a non-like-for-like peer comparison.
+- **TPQ-TIME-003:** TCS release date off by one day.
+- **TPQ-TIME-003:** Infosys release date off by one day.
+- **TPQ-RES-001:** Infosys ₹11,409 Cr was labelled operating profit, but the official consolidated figure is ₹10,163 Cr; ₹11,409 Cr is segment profit.
 
-Positive behavior:
-- same quarter identified
-- ROE period uncertainty disclosed
-- derived metrics identified
-- several figures independently reconciled
+## Additional captured P1 finding
 
-### FUND-003 through PIT-001
-**Captured before daily limit; independent-source audit underway**
+### EVENT-001
 
-Detailed batch audit:
-- reports/2026-09-27_BATCH-01_CAPTURED_RESULTS_AND_SOURCE_GAPS.md
+The answer was asked to summarize the latest TCS earnings event but used **Q1 FY26 management commentary** while framing the task around the latest event.
 
-Notable findings/observations:
-- FUND-003: 93% cash-conversion ratio is directly supported by TCS's official Q1 FY27 release; the captured analysis's unresolved net-income-vs-PAT basis difference needs clearer exceptional-item reconciliation.
-- FUND-004: valuation calculations contain provider-definition/date limitations; source trail incomplete.
-- FUND-005: FY26 balance-sheet figures are corroborated by TCS Annual Report; Q1 FY27 full balance sheet was not in the captured dataset.
-- TECH-001/002/003: methodologies are reasonable and caveats are explicit, but raw market-data source URLs were not preserved.
-- SCR-001: the response explicitly says the five names are not a comprehensive market-wide screen, so the screen result cannot yet be presented as exhaustive.
-- OWN-001: shareholding figures are corroborated by secondary sources, but an issuer/exchange filing URL is still required for portfolio-quality evidence.
-- OWN-002: the response correctly refused to infer zero pledge from missing data; official encumbrance source still needs to be recorded.
-- EVENT-001: the answer used Q1 FY26 management commentary while being asked for the latest Q1 FY27 event. This is TPQ-TIME-004 / TPQ-AI-004, P1, despite the answer disclosing the contamination.
-- PIT-001: the core historical cutoff is corroborated by TCS's official FY25 result and investor calendar; the Mar 2025 shareholding filing date remains a gap.
+- **TPQ-TIME-004 / TPQ-AI-004:** research-context / period contamination
+- **Severity:** P1
 
-### Daily-limit blocked
+The response disclosed the contamination. That disclosure is itself useful evidence of uncertainty handling, but it does not remove the underlying quality issue.
+
+## Captured cases with source/verification gaps
+
+The following were preserved but are **not promoted to fully verified findings** unless the evidence standard is satisfied:
+
+- FUND-003 — official TCS cash-conversion corroboration; accounting-basis reconciliation needs clearer treatment
+- FUND-004 — valuation definitions/source trail incomplete
+- FUND-005 — FY26 balance-sheet evidence available; full Q1 FY27 balance sheet not captured
+- TECH-001 — technical calculation method/caveats captured; raw market-data URL still required
+- TECH-002 — price/volume move captured; delivery/source evidence still required
+- TECH-003 — support/resistance method captured; raw price-history source still required
+- SCR-001 — five names returned, but response explicitly says it was not a comprehensive market-wide screen
+- OWN-001 — shareholding figures captured and secondary-corroborated; primary filing URL still required
+- OWN-002 — response correctly did not infer zero pledge from missing pledge data; primary filing evidence still required
+- PIT-001 — core historical cutoff corroborated by official TCS sources; one filing-date gap remains
+
+## Daily-limit blocked
+
 - SCR-002
 - SCR-003
 - PIT-002
 
-### Not run
+These are recorded as **blocked**, not failed.
+
+## Not run
+
 - MCP-001
 - SCORE-001
 - ADV-001
 - AI-001
 
-## Next
-When the Tape AI daily limit resets, run the three blocked tests first, then the four unrun tests. Do not fabricate missing results.
+No result is claimed for these cases.
+
+## Evidence standard
+
+Every serious finding should preserve:
+
+1. exact question
+2. observation timestamp in IST
+3. company/identifier
+4. reporting period or as-of date
+5. raw returned data
+6. independent source
+7. exact field/figure reconciled
+8. result
+9. TPQ code + severity
+10. recommended fix
+11. regression test idea
+
+## Freeze decision
+
+The live test run stopped for a genuine product-usage limit. Continuing would have required spending more time waiting for/resetting the quota rather than improving the portfolio evidence.
+
+The correct portfolio representation is therefore:
+
+> **Frozen evidence snapshot — transparent about coverage, explicit about limitations, and no fabricated completion.**
+
+See [reports/FINAL_SUBMISSION.md](./reports/FINAL_SUBMISSION.md) for the recruiter-facing summary.
