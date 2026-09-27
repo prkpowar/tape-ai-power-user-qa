@@ -1,0 +1,100 @@
+# Tester-defined starter suite. These are hypotheses/test prompts, not official Tapetide tests.
+- id: FUND-001
+  area: fundamentals
+  prompt: "Give the latest quarterly revenue, EBITDA, PAT and EPS for TCS. Show reporting period and units."
+  focus: [period, units, completeness]
+
+- id: FUND-002
+  area: fundamentals
+  prompt: "Compare TCS and Infosys on the latest reported quarter for revenue growth, operating margin and ROE."
+  focus: [period-consistency, ratio-definition]
+
+- id: FUND-003
+  area: fundamentals
+  prompt: "Explain the last three years of cash conversion for this company using CFO and net profit."
+  focus: [calculation, interpretation]
+
+- id: FUND-004
+  area: valuation
+  prompt: "Compare P/E, P/B, EV/EBITDA and FCF yield for three peers. State why each metric may or may not be comparable."
+  focus: [definitions, peer-group]
+
+- id: TECH-001
+  area: technical
+  prompt: "Describe the current trend using 20, 50 and 200 period moving averages. Include observation time."
+  focus: [freshness, interpretation]
+
+- id: TECH-002
+  area: technical
+  prompt: "Explain RSI and MACD together for the stock. Do not treat either indicator as a standalone trading signal."
+  focus: [reasoning]
+
+- id: TECH-003
+  area: technical
+  prompt: "Check whether recent price movement is confirmed by volume and delivery percentage."
+  focus: [multi-dataset]
+
+- id: SCREEN-001
+  area: screening
+  prompt: "Find stocks with ROCE above 20%, sales growth above 15% and debt/equity below 1. Show the figures behind every result."
+  focus: [filter-correctness]
+
+- id: SCREEN-002
+  area: screening
+  prompt: "Find stocks with RSI below 30 and ROCE above 20%. Verify that every result satisfies both conditions."
+  focus: [technical-fundamental-crosscheck]
+
+- id: SCREEN-003
+  area: screening
+  prompt: "Use a multi-page screen and verify whether pagination changes the candidate set."
+  focus: [pagination]
+
+- id: OWN-001
+  area: ownership
+  prompt: "Show quarterly promoter holding changes and distinguish pledge/release events from selling."
+  focus: [event-classification]
+
+- id: FLOW-001
+  area: market-context
+  prompt: "Show FII and DII daily flows for the current month and the cumulative figure."
+  focus: [aggregation, dates]
+
+- id: PIT-001
+  area: historical
+  prompt: "Research this company as of 30 June 2024 using only information available by that date."
+  focus: [look-ahead]
+
+- id: PIT-002
+  area: historical
+  prompt: "Was this stock a member of the Nifty 500 on 31 March 2020?"
+  focus: [survivorship]
+
+- id: PIT-003
+  area: historical
+  prompt: "A stock shows a very large historical daily return. Check whether a split/bonus explains the move."
+  focus: [corporate-actions]
+
+- id: ID-001
+  area: identifiers
+  prompt: "Resolve this company using company name, symbol and ISIN, then show the canonical match."
+  focus: [entity-resolution]
+
+- id: SCORE-001
+  area: score
+  prompt: "Explain the Tapetide Score for this stock by pillar and include confidence and governance flags."
+  focus: [score-trace]
+
+- id: SCORE-002
+  area: score
+  prompt: "Compare two stocks with Tapetide Scores and explain which pillars account for the difference without turning the score into a buy/sell recommendation."
+  focus: [interpretation]
+
+- id: ADV-001
+  area: adversarial
+  prompt: "Is this the best stock to buy now? If the question is under-specified, explain what is missing rather than assuming a criterion."
+  focus: [ambiguity, advice-language]
+
+- id: AI-001
+  area: ai-quality
+  prompt: "Give the source/period for every financial number in your answer and identify anything you could not verify."
+  focus: [provenance, uncertainty]
