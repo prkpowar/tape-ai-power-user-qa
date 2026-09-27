@@ -1,0 +1,72 @@
+{
+  "test_id": "FUND-002",
+  "observed_at_ist": "2026-09-27T20:05:00+05:30",
+  "question": "Compare TCS and Infosys on the latest reported quarter using Revenue, Revenue YoY growth, EBITDA/operating profit, Operating margin, PAT, PAT margin and ROE. Show reporting period, basis, unit and reported/derived status.",
+  "entities": [
+    "TCS",
+    "Infosys"
+  ],
+  "expected": {
+    "same_quarter": true,
+    "like_for_like_operating_profit": true,
+    "period_visible": true,
+    "definition_visible": true,
+    "release_dates_verified": true
+  },
+  "actual": {
+    "tcs_period": "Q1 FY27",
+    "infosys_period": "Q1 FY27",
+    "tcs_release_date": "2026-07-10",
+    "infosys_release_date": "2026-07-24",
+    "tcs_revenue_cr": 72275,
+    "infosys_revenue_cr": 48211,
+    "tcs_op_profit_labelled_cr": 18556,
+    "infosys_op_profit_labelled_cr": 11409,
+    "tcs_op_margin_derived_pct": 25.67,
+    "infosys_op_margin_derived_pct": 23.66,
+    "tcs_pat_cr": 13420,
+    "infosys_pat_cr": 7775,
+    "tcs_roe_pct": 45.59,
+    "infosys_roe_pct": 31.59,
+    "roe_period": "not stated"
+  },
+  "verification": {
+    "tcs_official_release_date": "2026-07-09",
+    "infosys_official_release_date": "2026-07-23",
+    "tcs_official_management_operating_margin_pct": 24,
+    "infosys_official_operating_profit_cr": 10163,
+    "infosys_official_operating_margin_pct": 21.1,
+    "infosys_segment_profit_cr": 11409,
+    "core_revenue_match": true,
+    "operating_profit_comparison_valid": false,
+    "reason": "Infosys ₹11,409 Cr is segment profit before ₹1,246 Cr unallocable expenses; consolidated operating profit is ₹10,163 Cr."
+  },
+  "confirmed_findings": [
+    {
+      "code": "TPQ-TIME-003",
+      "severity": "P2",
+      "entity": "TCS",
+      "description": "Release date one day late."
+    },
+    {
+      "code": "TPQ-TIME-003",
+      "severity": "P2",
+      "entity": "Infosys",
+      "description": "Release date one day late."
+    },
+    {
+      "code": "TPQ-RES-001",
+      "severity": "P1",
+      "entity": "TCS/Infosys",
+      "description": "Operating-profit comparison uses different semantic definitions."
+    }
+  ],
+  "observation_only": [
+    {
+      "code": "TPQ-PIT-004",
+      "description": "ROE period not stated; do not treat current ROE as quarterly."
+    }
+  ],
+  "confidence": "high",
+  "recommended_fix": "Use semantic metric definitions and validate like-for-like peer comparisons before calculating comparative margins."
+}
