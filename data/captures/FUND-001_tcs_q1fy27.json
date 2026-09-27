@@ -1,0 +1,41 @@
+{
+  "test_id": "FUND-001",
+  "observed_at_ist": "2026-09-27T19:40:00+05:30",
+  "question": "Give the latest quarterly revenue, EBITDA, PAT and EPS for TCS. Show the reporting period and units for every number. Also state the observation/data freshness date if available.",
+  "entity": "TCS",
+  "expected": {
+    "latest_quarter_identified": true,
+    "period_visible": true,
+    "units_visible": true,
+    "derived_metrics_labeled": true,
+    "result_release_date_verified": true,
+    "exceptional_item_basis_visible": true
+  },
+  "actual": {
+    "quarter": "Q1 FY27",
+    "period_end": "2026-06-30",
+    "revenue_cr": 72275,
+    "derived_ebitda_cr": 18556,
+    "pat_profit_for_period_cr": 13420,
+    "eps": 36.90,
+    "stated_result_release_date": "2026-07-10",
+    "data_refresh_ist": "2026-09-27T07:47:00+05:30",
+    "single_source_growth_caveat": true
+  },
+  "verification": {
+    "official_result_release_date": "2026-07-09",
+    "official_revenue_cr": 72275,
+    "official_profit_for_period_cr": 13420,
+    "official_eps": 36.90,
+    "release_date_match": false,
+    "core_financial_match": true,
+    "exceptional_item_note": "TCS investor FAQ's net-income series excludes exceptional items; detailed Q1 filing profit for the period is ₹13,420 Cr after the ₹668 Cr exceptional legal-claim item."
+  },
+  "classification": [
+    "TPQ-TIME-003",
+    "TPQ-CALC-007"
+  ],
+  "severity": "P2",
+  "confidence": "high",
+  "recommended_fix": "Verify official release date from issuer calendar and label derived EBITDA/operating-profit proxy separately from management operating margin."
+}
