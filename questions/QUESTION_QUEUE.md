@@ -4,7 +4,7 @@ Use this file as the visible research queue. Mark each item `PENDING`, `RUNNING`
 
 | ID | Area | Question | Status |
 |---|---|---|---|
-| FUND-001 | Fundamentals | What is the latest reported revenue, EBITDA and PAT for TCS, with reporting period? | PENDING |
+| FUND-001 | Fundamentals | What is the latest reported revenue, EBITDA and PAT for TCS, with reporting period? | VERIFIED — 2 P2 findings |
 | FUND-002 | Fundamentals | Compare TCS and Infosys on 5-year revenue growth, operating margin and ROE. | PENDING |
 | FUND-003 | Fundamentals | Explain the latest change in TCS cash conversion using CFO and PAT. | PENDING |
 | FUND-004 | Valuation | Compare P/E, P/B, EV/EBITDA and FCF yield for two comparable companies. | PENDING |
@@ -14,13 +14,13 @@ Use this file as the visible research queue. Mark each item `PENDING`, `RUNNING`
 | TECH-003 | Technicals | Identify recent support/resistance and state the basis used. | PENDING |
 | SCR-001 | Screener | Find NSE/BSE stocks with ROE > 15%, Debt/Equity < 1 and RSI < 40. | PENDING |
 | SCR-002 | Screener | Verify that every returned stock actually satisfies each filter. | PENDING |
+| SCR-003 | Screener | Test whether pagination changes the candidate set. | PENDING |
 | OWN-001 | Ownership | Summarize latest promoter/FII/DII ownership and reporting period. | PENDING |
 | OWN-002 | Ownership | Identify material promoter pledge information and the relevant date. | PENDING |
 | EVENT-001 | Events | Summarize the latest earnings event and distinguish facts from interpretation. | PENDING |
 | PIT-001 | Point-in-time | What information about TCS was available as of 30 June 2025? | PENDING |
 | PIT-002 | Point-in-time | Answer using only information published on or before 30 June 2025. | PENDING |
-| AI-001 | AI reasoning | Is this company fundamentally strong? Define the criteria before answering. | PENDING |
-| AI-002 | AI reasoning | Give the evidence for each material conclusion and identify uncertainty. | PENDING |
 | MCP-001 | MCP | Test whether a multi-constraint stock question resolves to the correct tool(s)/parameters. | PENDING |
 | SCORE-001 | Tapetide Score | Explain the current score, pillars, coverage and any eligibility/limitations. | PENDING |
-| UX-001 | Usability | Give the same research request twice and check whether material values/periods remain consistent. | PENDING |
+| ADV-001 | AI reasoning | Is this company fundamentally strong? Define the criteria before answering. | PENDING |
+| AI-001 | AI reasoning | Give the source/period for every financial number in your answer and identify anything you could not verify. | PENDING |
