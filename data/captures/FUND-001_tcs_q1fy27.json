@@ -20,6 +20,7 @@
     "eps": 36.90,
     "stated_result_release_date": "2026-07-10",
     "data_refresh_ist": "2026-09-27T07:47:00+05:30",
+    "derived_metric_disclosed": true,
     "single_source_growth_caveat": true
   },
   "verification": {
@@ -29,13 +30,23 @@
     "official_eps": 36.90,
     "release_date_match": false,
     "core_financial_match": true,
-    "exceptional_item_note": "TCS investor FAQ's net-income series excludes exceptional items; detailed Q1 filing profit for the period is ₹13,420 Cr after the ₹668 Cr exceptional legal-claim item."
+    "derived_metric_transparency": "pass",
+    "exceptional_item_note": "The detailed filing profit for the period is ₹13,420 Cr after a ₹668 Cr exceptional legal-claim item. TCS's investor FAQ separately reports ₹13,849 Cr net income excluding exceptional items."
   },
-  "classification": [
-    "TPQ-TIME-003",
-    "TPQ-CALC-007"
+  "confirmed_findings": [
+    {
+      "code": "TPQ-TIME-003",
+      "severity": "P2",
+      "description": "Earnings release date off by one day."
+    }
   ],
-  "severity": "P2",
+  "opportunities": [
+    {
+      "code": "UX-DERIVED-METRIC",
+      "status": "observation-only",
+      "description": "Make the derived nature and calculation basis of EBITDA even more visually explicit."
+    }
+  ],
   "confidence": "high",
-  "recommended_fix": "Verify official release date from issuer calendar and label derived EBITDA/operating-profit proxy separately from management operating margin."
+  "recommended_fix": "Verify earnings release date from the issuer calendar and preserve release date separately from refresh timestamp and period-end date."
 }
