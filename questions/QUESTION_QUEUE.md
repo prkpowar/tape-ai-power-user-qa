@@ -4,8 +4,8 @@ Use this file as the visible research queue. Mark each item `PENDING`, `RUNNING`
 
 | ID | Area | Question | Status |
 |---|---|---|---|
-| FUND-001 | Fundamentals | What is the latest reported revenue, EBITDA and PAT for TCS, with reporting period? | VERIFIED — 2 P2 findings |
-| FUND-002 | Fundamentals | Compare TCS and Infosys on 5-year revenue growth, operating margin and ROE. | PENDING |
+| FUND-001 | Fundamentals | What is the latest reported revenue, EBITDA and PAT for TCS, with reporting period? | VERIFIED — 1 P2 finding |
+| FUND-002 | Fundamentals | Compare TCS and Infosys on 5-year revenue growth, operating margin and ROE. | VERIFIED — 2 P2 + 1 P1 findings |
 | FUND-003 | Fundamentals | Explain the latest change in TCS cash conversion using CFO and PAT. | PENDING |
 | FUND-004 | Valuation | Compare P/E, P/B, EV/EBITDA and FCF yield for two comparable companies. | PENDING |
 | FUND-005 | Financial health | Identify meaningful balance-sheet risks and cite the period for each metric. | PENDING |
